@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="inactive_button">#ECECEC</color>
+    <color name="active_button">#B6B6B6</color>
+    <color name="light_view">#ECECEC</color>
+    <color name="toolbar">#B6B6B6</color>
+    <color name="first_color">#ECECEC</color>
+    <color name="second_color">#B6B6B6</color>
+    <color name="darker_gray">#525252</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.weather.weatherapplication.presentation.searchcity.SearchCityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.searchcity.SearchCityActivity">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_main"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_title_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_app"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <View
+            android:id="@+id/vw"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:background="@color/light_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_main" />
+
+        <ImageView
+            android:id="@+id/iv_gps"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_gps"
+            app:layout_constraintBottom_toBottomOf="@+id/vw"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vw" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_search_gps"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/txt_search_gps"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/vw"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_gps"
+            app:layout_constraintTop_toTopOf="@+id/vw" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_inform_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/txt_informe_your_city"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vw" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ly_city"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textColorHint="@color/black"
+            app:boxBackgroundColor="@color/white"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_inform_city">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etd_city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/hint_city"
+                android:text="@={viewModel.city}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_converter"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_margin="20dp"
+            android:activeButton="@{viewModel.button}"
+            android:backgroundTint="@color/inactive_button"
+            android:onClick="@{()->viewModel.openActivity()}"
+            android:text="@string/btn_continue"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ly_city" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

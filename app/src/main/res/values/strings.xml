@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Weather Application</string>
+    <string name="txt_search_gps">Nós também podemos usar a sua localização. \nClique aqui para ativar a pesquisa!</string>
+    <string name="txt_hour_day">%s | %s</string>
+    <string name="txt_temp">%d°C</string>
+    <string name="txt_detail_weather">Detalhes da precisão do tempo</string>
+    <string name="txt_sun_rise">Nascer do sol</string>
+    <string name="txt_sun_down">Pôr do sol</string>
+    <string name="btn_continue">Continuar</string>
+    <string name="hint_city">Cidade</string>
+    <string name="txt_informe_your_city">Informe o nome da cidade:</string>
+    <string name="title_app">Previsão do tempo</string>
+</resources>

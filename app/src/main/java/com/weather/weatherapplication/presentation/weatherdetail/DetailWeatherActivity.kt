@@ -50,7 +50,7 @@ class DetailWeatherActivity : BaseActivity<ActivityDetailWeatherBinding>() {
                         binding.model = it.data?.data?.get(0)
                         it.data?.data?.get(0)?.weatherInfo?.let { it1 -> adapter.setNewList(it1) }
                     } else {
-                        displayAlert()
+                        displayAlert(getString(R.string.dialog_no_weather))
                     }
                 }
                 is Resource.Loading -> {
@@ -58,19 +58,19 @@ class DetailWeatherActivity : BaseActivity<ActivityDetailWeatherBinding>() {
                 }
                 else -> {
                     loading.stopLoading()
-                    AlertHelper.snackBar(binding.constraint, getString(R.string.error_net))
+                    displayAlert(getString(R.string.error_net))
                 }
             }
         }
         _viewModel.onBackPressLiveData.observe(this) { onBackPressed() }
     }
 
-    private fun displayAlert() {
+    private fun displayAlert(message: String) {
         val alert = AlertHelper
             .alert(
                 this,
                 getString(R.string.dialog_alert),
-                getString(R.string.dialog_no_weather)
+                message
             )
         alert.setButton(
             Dialog.BUTTON_POSITIVE,

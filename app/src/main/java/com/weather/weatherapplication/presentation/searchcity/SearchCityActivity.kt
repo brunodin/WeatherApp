@@ -69,8 +69,7 @@ class SearchCityActivity : BaseActivity<ActivitySearchCityBinding>() {
         }
         _viewModel.getCityLiveData.observe(this) {
             if (it is Resource.Success) {
-                val list = it.data?.map { dbCity -> dbCity.city }
-                setAutoCompleteField(list)
+                setAutoCompleteField(it.data)
             }
         }
     }
@@ -120,7 +119,7 @@ class SearchCityActivity : BaseActivity<ActivitySearchCityBinding>() {
             binding.etdCity.setOnItemClickListener { _, _, position, _ ->
                 _viewModel.city.set(list[position])
                 binding.etdCity.dismissDropDown()
-                _viewModel.openActivity()
+                _viewModel.openActivity(false)
             }
         }
     }

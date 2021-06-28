@@ -14,10 +14,12 @@ class GetAllCityUseCase @Inject constructor(
 ) {
     suspend fun execute(
         city: String
-    ): Resource<List<DbCity>> {
-        var resultResponse: Resource<List<DbCity>>
+    ): Resource<List<String>> {
+        var resultResponse: Resource<List<String>>
         return try {
-            resultResponse = Resource.Success(repository.getAllCity(city))
+            val list = repository.getAllCity(city)
+            val cityList = list.map { dbCity -> dbCity.city  }
+            resultResponse = Resource.Success(cityList)
             resultResponse
         } catch (e: Exception) {
             resultResponse = Resource.Failure(e)

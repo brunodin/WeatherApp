@@ -35,8 +35,8 @@ class SearchCityViewModel @Inject constructor(
     private val _saveCityLiveData = SingleLiveEvent<Resource<Unit>>()
     val saveCityLiveData: LiveData<Resource<Unit>> = _saveCityLiveData
 
-    private val _getCityLiveData = SingleLiveEvent<Resource<List<DbCity>>>()
-    val getCityLiveData: LiveData<Resource<List<DbCity>>> = _getCityLiveData
+    private val _getCityLiveData = SingleLiveEvent<Resource<List<String>>>()
+    val getCityLiveData: LiveData<Resource<List<String>>> = _getCityLiveData
 
     fun openActivity(showDialog: Boolean = true) {
         val bundle = Bundle()

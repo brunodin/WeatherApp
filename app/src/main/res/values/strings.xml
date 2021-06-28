@@ -14,4 +14,9 @@
     <string name="dialog_no_weather">Não há previsão para essa localidade</string>
     <string name="ok">Ok</string>
     <string name="dialog_save_city">Deseja salvar a pesquisa?</string>
+    <string name="txt_success_save">Salvo com sucesso</string>
+    <string name="txt_yes">Sim</string>
+    <string name="txt_no">Não</string>
+    <string name="error_save">Não foi possivel gravar</string>
+    <string name="error_couldnt_get">Não foi recuperar os dados</string>
 </resources>

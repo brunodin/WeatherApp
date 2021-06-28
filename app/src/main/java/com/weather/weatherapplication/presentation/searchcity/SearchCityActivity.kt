@@ -53,7 +53,7 @@ class SearchCityActivity : BaseActivity<ActivitySearchCityBinding>() {
             when(it) {
                 is Resource.Success -> {
                     loading.stopLoading()
-                    Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.txt_success_save), Toast.LENGTH_SHORT).show()
                     _viewModel.openActivity(false)
                 }
                 is Resource.Loading -> {
@@ -84,13 +84,13 @@ class SearchCityActivity : BaseActivity<ActivitySearchCityBinding>() {
             )
         alert.setButton(
             Dialog.BUTTON_POSITIVE,
-            "Sim"
+            getString(R.string.txt_yes)
         ) { _, _ ->
             _viewModel.saveCity()
         }
         alert.setButton(
             Dialog.BUTTON_NEGATIVE,
-            "Não"
+            getString(R.string.txt_no)
         ) { _, _ ->
             startActivity(bundle)
         }

@@ -7,11 +7,6 @@ import com.weather.weatherapplication.domain.repository.WeatherRepository
 import com.weather.weatherapplication.domain.util.Resource
 import com.weather.weatherapplication.presentation.util.getLocalDate
 import com.weather.weatherapplication.presentation.util.setDecimalScaleInDouble
-import java.math.BigDecimal
-import java.math.RoundingMode
-import java.time.LocalDateTime
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class SearchCityUseCase @Inject constructor(

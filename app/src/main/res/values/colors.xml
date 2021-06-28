@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="inactive_button">#ECECEC</color>
-    <color name="active_button">#B6B6B6</color>
+    <color name="active_button">#525252</color>
     <color name="light_view">#ECECEC</color>
     <color name="toolbar">#B6B6B6</color>
     <color name="first_color">#ECECEC</color>

@@ -5,6 +5,10 @@ import com.weather.weatherapplication.data.model.searchcity.WeatherCityModel
 import com.weather.weatherapplication.data.model.weatherInfoModel.WeatherInfoModel
 import com.weather.weatherapplication.domain.repository.WeatherRepository
 import com.weather.weatherapplication.domain.util.Resource
+import com.weather.weatherapplication.presentation.util.getLocalDate
+import com.weather.weatherapplication.presentation.util.setDecimalScaleInDouble
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -24,6 +28,7 @@ class SearchCityUseCase @Inject constructor(
             if (resultResponse is Resource.Success) {
                 resultResponse.data?.data?.let {
                     val list = getNewListForAdapter(it[0])
+                    it[0].temp = setDecimalScaleInDouble(it[0].temp!!)
                     it[0].weatherInfo = list
                     it[0].dateTimeNow = getTime(it[0])
                 }
@@ -35,10 +40,7 @@ class SearchCityUseCase @Inject constructor(
     }
 
     private fun getTime(model: DataModel): String {
-        return LocalDateTime
-            .parse(model.obTime,
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-            ).format(DateTimeFormatter.ofPattern("HH:mm - dd/MM/yyyy"))
+        return getLocalDate(model.obTime!!)
     }
 
     private fun getNewListForAdapter(model: DataModel): List<WeatherInfoModel> {

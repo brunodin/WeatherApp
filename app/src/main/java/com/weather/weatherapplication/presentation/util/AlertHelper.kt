@@ -1,5 +1,6 @@
 package com.weather.weatherapplication.presentation.util
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
@@ -16,12 +17,13 @@ import com.weather.weatherapplication.R
 
 class AlertHelper {
     companion object {
-        fun alert(ctx: Context, title: String, message: String) {
+        fun alert(ctx: Context, title: String, message: String): AlertDialog {
             val alertDialogBuilder = android.app.AlertDialog.Builder(ctx)
             val alertDialog = alertDialogBuilder.create()
             alertDialog.setTitle(title)
             alertDialog.setMessage(Html.fromHtml(message, Html.FROM_HTML_MODE_COMPACT))
-            alertDialog.show()
+            alertDialog.setCancelable(false)
+            return alertDialog
         }
 
         fun loadingDialog(ctx: Context): Dialog {

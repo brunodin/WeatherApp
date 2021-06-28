@@ -4,8 +4,9 @@ import com.weather.weatherapplication.data.datasource.dataservice.WeatherDataSer
 import com.weather.weatherapplication.data.model.searchcity.WeatherCityModel
 import com.weather.weatherapplication.domain.util.Resource
 import com.weather.weatherapplication.domain.util.ResponseToResource
+import javax.inject.Inject
 
-class WeatherRepositoryImpl(
+class WeatherRepositoryImpl @Inject constructor(
     private val dataService: WeatherDataService
 ) : WeatherRepository {
     override suspend fun getCityWeather(

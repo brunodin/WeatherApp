@@ -12,11 +12,12 @@ object BindingAdapter {
     @JvmStatic
     @BindingAdapter("android:activeButton")
     fun activeButton(button: MaterialButton, active: ObservableField<Boolean>) {
-        val (buttonColor, textColor) = if (active.get() == true) {
-            Pair(R.color.active_button, R.color.white)
+        val (buttonColor, textColor, activeButton) = if (active.get() == true) {
+            Triple(R.color.active_button, R.color.white, true)
         } else {
-            Pair(R.color.inactive_button, R.color.black)
+            Triple(R.color.inactive_button, R.color.black, false)
         }
+        button.isEnabled = activeButton
         button.setBackgroundColor(
             ContextCompat.getColor(
                 button.context,

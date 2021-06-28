@@ -20,9 +20,9 @@ class ConnectionModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         val okHttpClient = OkHttpClient.Builder()
-        okHttpClient.connectTimeout(30000, TimeUnit.MILLISECONDS)
-        okHttpClient.readTimeout(30000, TimeUnit.MILLISECONDS)
-        okHttpClient.writeTimeout(30000, TimeUnit.MILLISECONDS)
+        okHttpClient.connectTimeout(2000, TimeUnit.MILLISECONDS)
+        okHttpClient.readTimeout(2000, TimeUnit.MILLISECONDS)
+        okHttpClient.writeTimeout(2000, TimeUnit.MILLISECONDS)
         return okHttpClient.build()
     }
 
@@ -32,7 +32,6 @@ class ConnectionModule {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
             .build()
     }
 

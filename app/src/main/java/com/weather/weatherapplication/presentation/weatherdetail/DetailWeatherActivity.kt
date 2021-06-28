@@ -1,11 +1,15 @@
 package com.weather.weatherapplication.presentation.weatherdetail
 
+import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.weather.weatherapplication.R
+import com.weather.weatherapplication.data.constants.Constants.CITY
 import com.weather.weatherapplication.databinding.ActivityDetailWeatherBinding
 import com.weather.weatherapplication.domain.util.Resource
 import com.weather.weatherapplication.presentation.base.BaseActivity
+import com.weather.weatherapplication.presentation.util.AlertHelper
 import com.weather.weatherapplication.presentation.util.LoadingHelper
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -26,7 +30,7 @@ class DetailWeatherActivity : BaseActivity<ActivityDetailWeatherBinding>() {
 
     override fun onStart() {
         super.onStart()
-        val city = intent.getStringExtra("city")
+        val city = intent.getStringExtra(CITY)
         _viewModel.getSearchedCity(city!!)
         
         initViewElements()
@@ -41,17 +45,42 @@ class DetailWeatherActivity : BaseActivity<ActivityDetailWeatherBinding>() {
         _viewModel.weatherDetailLiveData.observe(this) {
             when(it) {
                 is Resource.Success -> {
-                    binding.model = it.data?.data?.get(0)
                     loading.stopLoading()
-                    it.data?.data?.get(0)?.weatherInfo?.let { it1 -> adapter.setNewList(it1) }
+                    if (!it.data?.data.isNullOrEmpty()) {
+                        binding.model = it.data?.data?.get(0)
+                        it.data?.data?.get(0)?.weatherInfo?.let { it1 -> adapter.setNewList(it1) }
+                    } else {
+                        displayAlert()
+                    }
                 }
                 is Resource.Loading -> {
                     loading.startLoading()
                 }
                 else -> {
                     loading.stopLoading()
+                    AlertHelper.snackBar(binding.constraint, getString(R.string.error_net))
                 }
             }
         }
+        _viewModel.onBackPressLiveData.observe(this) { onBackPressed() }
+    }
+
+    private fun displayAlert() {
+        val alert = AlertHelper
+            .alert(
+                this,
+                getString(R.string.dialog_alert),
+                getString(R.string.dialog_no_weather)
+            )
+        alert.setButton(
+            Dialog.BUTTON_POSITIVE,
+            getString(R.string.ok)
+        ) { _, _ ->
+            onBackPressed()
+        }
+        alert.setOnShowListener {
+            alert.getButton(Dialog.BUTTON_POSITIVE).setTextColor(Color.BLACK)
+        }
+        alert.show()
     }
 }

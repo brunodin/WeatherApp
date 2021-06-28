@@ -1,6 +1,6 @@
 package com.weather.weatherapplication.data.service
 
-import com.weather.weatherapplication.data.endpoints.Weather
+import com.weather.weatherapplication.data.constants.Weather
 import com.weather.weatherapplication.data.model.searchcity.WeatherCityModel
 import retrofit2.Response
 import retrofit2.http.GET

@@ -1,6 +1,9 @@
 package com.weather.weatherapplication.di
 
+import com.weather.weatherapplication.data.datasource.dataservice.DbCityDataService
 import com.weather.weatherapplication.data.datasource.dataservice.WeatherDataService
+import com.weather.weatherapplication.domain.repository.DbCityRepository
+import com.weather.weatherapplication.domain.repository.DbCityRepositoryImpl
 import com.weather.weatherapplication.domain.repository.WeatherRepository
 import com.weather.weatherapplication.domain.repository.WeatherRepositoryImpl
 import dagger.Module
@@ -17,4 +20,9 @@ class RepositoryModule {
     fun providerWeatherRepository(
         dataService: WeatherDataService
     ): WeatherRepository = WeatherRepositoryImpl(dataService)
+
+    @Provides
+    fun providerCityRepository(
+        dataService: DbCityDataService
+    ): DbCityRepository = DbCityRepositoryImpl(dataService)
 }

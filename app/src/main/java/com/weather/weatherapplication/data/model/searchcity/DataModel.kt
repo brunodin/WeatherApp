@@ -42,11 +42,11 @@ data class DataModel(
     @SerializedName("pres")
     val pres: Double?,
     @SerializedName("rh")
-    val rh: Int?,
+    val rh: Double?,
     @SerializedName("slp")
-    val slp: Int?,
+    val slp: Double?,
     @SerializedName("snow")
-    val snow: Int?,
+    val snow: Double?,
     @SerializedName("solar_rad")
     val solarRad: Double?,
     @SerializedName("state_code")
@@ -58,7 +58,7 @@ data class DataModel(
     @SerializedName("sunset")
     val sunset: String?,
     @SerializedName("temp")
-    val temp: Int?,
+    var temp: Double?,
     @SerializedName("timezone")
     val timezone: String?,
     @SerializedName("ts")

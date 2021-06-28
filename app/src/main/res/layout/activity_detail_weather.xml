@@ -20,6 +20,7 @@
         android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.weatherdetail.DetailWeatherActivity">
@@ -132,7 +133,7 @@
                     android:id="@+id/txt_temp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text='@{model.temp != null ? String.format(@string/txt_temp, model.temp) : ""}'
+                    android:text='@{model.temp != null ? String.format(@string/txt_temp, String.valueOf(model.temp)) : ""}'
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="70sp"
